@@ -80,7 +80,7 @@ const FormPreview = ({ schema }: { schema: FormSchema | null }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded shadow-md">
+    <form onSubmit={handleSubmit} className="p-4 border rounded shadow-md bg-gray-800 text-white max-h-[85vh] overflow-y-auto">
       <h2 className="text-lg font-bold mb-2">{schema.formTitle}</h2>
       <p className="mb-4">{schema.formDescription}</p>
 
@@ -100,7 +100,7 @@ const FormPreview = ({ schema }: { schema: FormSchema | null }) => {
               value={formData[field?.id] || ""}
               onChange={(e) => handleInputChange(field?.id, e.target.value)}
               required={field?.required}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-2 border rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-white"
             />
           )}
 
@@ -112,7 +112,7 @@ const FormPreview = ({ schema }: { schema: FormSchema | null }) => {
               value={formData[field?.id] || ""}
               onChange={(e) => handleInputChange(field?.id, e.target.value)}
               required={field?.required}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-2 border rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-white"
             />
           )}
 
@@ -123,7 +123,7 @@ const FormPreview = ({ schema }: { schema: FormSchema | null }) => {
               value={formData[field?.id] || ""}
               onChange={(e) => handleInputChange(field?.id, e.target.value)}
               required={field?.required}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-2 border rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-white"
             />
           )}
 
@@ -133,7 +133,7 @@ const FormPreview = ({ schema }: { schema: FormSchema | null }) => {
               value={formData[field?.id] || ""}
               onChange={(e) => handleInputChange(field?.id, e.target.value)}
               required={field?.required}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-2 border rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-white"
             >
               <option value="">Select an option</option>
               {field?.options?.map((option, index) => (
@@ -156,8 +156,9 @@ const FormPreview = ({ schema }: { schema: FormSchema | null }) => {
                     checked={formData[field.id] === option?.value}
                     onChange={(e) => handleInputChange(field?.id, e?.target?.value)}
                     required={field?.required}
+                    className="text-white"
                   />
-                  <label htmlFor={`${field?.id}-${option?.value}`} className="ml-2">
+                  <label htmlFor={`${field?.id}-${option?.value}`} className="ml-2 text-white">
                     {option?.label}
                   </label>
                 </span>

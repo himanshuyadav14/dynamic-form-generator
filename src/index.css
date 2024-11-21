@@ -2,16 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
+/* App.css */
+
+/* Global dark mode styles */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #181818;  /* Dark background */
+  color: #f0f0f0;  /* Light text */
 }
+
+.text-xl {
+  color: #f0f0f0;  /* Dark mode text color for headings */
+}
+
+.bg-dark {
+  background-color: #282828;  /* Dark background color for sections */
+}
+
+/* Monaco editor styles for dark mode */
+.monaco-editor {
+  background-color: #1e1e1e !important; /* Monaco editor background */
+  color: #dcdcdc !important;  /* Monaco editor text color */
+}
+
+.monaco-editor .token.comment {
+  color: #6a9955 !important; /* Comment color */
+}
+
+.monaco-editor .token.keyword {
+  color: #c586c0 !important; /* Keyword color */
+}
+
+.monaco-editor .token.string {
+  color: #ce9178 !important; /* String color */
+}
+
+/* Customize other UI components */
+button {
+  background-color: #3e3e3e;
+  color: #f0f0f0;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Add dark background color for the panels */
+.dark-panel {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.bg-blur {
+  background: rgba(0, 0, 0, 0.6);  /* Semi-transparent black */
+  backdrop-filter: blur(10px);      /* Apply blur */
+}
+
+.shadow-lg {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);  /* Light shadow effect */
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
