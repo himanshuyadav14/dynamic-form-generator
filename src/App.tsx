@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"; 
+import "./App.css";
+import JSONEditor from "./components/JSONEditor";
+import FormPreview from "./components/FormPreview";
 
 function App() {
+  const [jsonSchema, setJsonSchema] = useState<string>("");
+  const [parsedSchema, setParsedSchema] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleJSONChange = (input: string) => {
+    setJsonSchema(input);
+    try {
+      const parsed = JSON.parse(input);
+      setParsedSchema(parsed);
+      setError(null);
+    } catch (err) {
+      setParsedSchema(null);
+      setError("Invalid JSON format");
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-col md:flex-row h-screen overflow-hidden">
+      {/* Left Panel: JSON Editor */}
+      <div className="w-full md:w-1/2 p-4 border-r">
+        <h1 className="text-xl font-bold mb-4">JSON Editor</h1>
+        <JSONEditor json={jsonSchema} onChange={handleJSONChange} error={error} />
+      </div>
+
+      {/* Right Panel: Form Preview */}
+      <div className="w-full md:w-1/2 p-4">
+        <h1 className="text-xl font-bold mb-4">Form Preview</h1>
+        <FormPreview schema={parsedSchema} />
+      </div>
     </div>
   );
 }
