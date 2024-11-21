@@ -80,7 +80,10 @@ const FormPreview = ({ schema }: { schema: FormSchema | null }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded shadow-md bg-gray-800 text-white max-h-[85vh] overflow-y-auto">
+    <form
+      onSubmit={handleSubmit}
+      className="p-4 border rounded shadow-md bg-gray-800 text-white max-h-[85vh] overflow-hidden"
+    >
       <h2 className="text-lg font-bold mb-2">{schema.formTitle}</h2>
       <p className="mb-4">{schema.formDescription}</p>
 
@@ -107,6 +110,30 @@ const FormPreview = ({ schema }: { schema: FormSchema | null }) => {
           {field?.type === "email" && (
             <input
               type="email"
+              id={field?.id}
+              placeholder={field?.placeholder}
+              value={formData[field?.id] || ""}
+              onChange={(e) => handleInputChange(field?.id, e.target.value)}
+              required={field?.required}
+              className="w-full p-2 border rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-white"
+            />
+          )}
+
+          {field?.type === "password" && (
+            <input
+              type="password"
+              id={field?.id}
+              placeholder={field?.placeholder}
+              value={formData[field?.id] || ""}
+              onChange={(e) => handleInputChange(field?.id, e.target.value)}
+              required={field?.required}
+              className="w-full p-2 border rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-white"
+            />
+          )}
+
+          {field?.type === "number" && (
+            <input
+              type="number"
               id={field?.id}
               placeholder={field?.placeholder}
               value={formData[field?.id] || ""}
@@ -154,11 +181,16 @@ const FormPreview = ({ schema }: { schema: FormSchema | null }) => {
                     name={field?.id}
                     value={option?.value}
                     checked={formData[field.id] === option?.value}
-                    onChange={(e) => handleInputChange(field?.id, e?.target?.value)}
+                    onChange={(e) =>
+                      handleInputChange(field?.id, e?.target?.value)
+                    }
                     required={field?.required}
                     className="text-white"
                   />
-                  <label htmlFor={`${field?.id}-${option?.value}`} className="ml-2 text-white">
+                  <label
+                    htmlFor={`${field?.id}-${option?.value}`}
+                    className="ml-2 text-white"
+                  >
                     {option?.label}
                   </label>
                 </span>

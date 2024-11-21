@@ -5,13 +5,13 @@ const JSONEditor = ({ json, onChange, error }: { json: string; onChange: (value:
   const shouldShowError = json.trim() !== '' && error;
 
   return (
-    <div className="h-full max-h-full flex flex-col text-white">
+    <div className="h-full max-h-full flex flex-col text-white overflow-hidden">
       {/* Wrapper div for Monaco Editor */}
       <div
         style={{
           borderRadius: '10px',
           border: '1px solid #444',
-          height: '800px',
+          height: '750px',
           width: '100%',
           overflow: 'hidden',
           backgroundColor: '#1e1e1e',
